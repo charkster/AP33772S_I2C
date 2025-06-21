@@ -70,9 +70,6 @@ def handle_client(client):
         if (selection == 0): # disable
             USB_PD.set_rdo_reset()
             USB_PD.set_output('OFF')
-            en_pin.value(0)
-            time.sleep(1)
-            en_pin.value(1)
         else:
             USB_PD.set_output('AUTO')
             pdo = USB_PD.get_pdo(selection)
