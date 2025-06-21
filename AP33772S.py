@@ -47,7 +47,7 @@ class AP33772S:
     _PDO_CURRENT_LSB     = 0.25 # 250mA
     _PDO_CURRENT_BASE    = 1.0  # 1.0A
 
-    # a bit field will have an offset and width, and that can be used to extract the bit field value from a larger concatinated value (such as a dword)
+    # a bit field will have an offset and width, and that can be used to extract the bit field value from a larger concatinated value (such as a word)
     # the offset is the number of single bit shifts, the width can be used to create a bit mask to bitwise-AND with the larger concatinated value, 
     #  to elinimate higher bits which are not part of the bit field. A bit mask is 2 ** width - 1. For example a width of 3 is 2 ** 3 - 1 = 0x07
     def get_pdo(self, num=1):
