@@ -68,8 +68,8 @@ def handle_client(client):
         selection = int(request.split('selection=')[1][0])
         pps_volt  = float(request.split('pps_volt=')[1][:-1])
         if (selection == 0): # disable
-            USB_PD.set_rdo_reset()
             USB_PD.set_output('OFF')
+            USB_PD.set_rdo(1,5.0,3.0) # need to do this as set_rdo_reset() loses i2c communication
         else:
             USB_PD.set_output('AUTO')
             pdo = USB_PD.get_pdo(selection)
