@@ -51,7 +51,6 @@ class AP33772S:
     # the offset is the number of single bit shifts, the width can be used to create a bit mask to bitwise-AND with the larger concatinated value, 
     #  to elinimate higher bits which are not part of the bit field. A bit mask is 2 ** width - 1. For example a width of 3 is 2 ** 3 - 1 = 0x07
     def get_pdo(self, num=1):
-    
         pdo_word = self.read_data(self._SRCPDO_ADDR+num, num_bytes=self._SRCPDO_NUM_BYTES)
         pdo_type_raw = int((pdo_word >> self._PDO_TYPE_OFFSET) & (2**self._PDO_TYPE_WIDTH-1))
         if (pdo_type_raw == self._PDO_TYPE_FIXED):
@@ -68,12 +67,6 @@ class AP33772S:
             voltage = ((pdo_word >> self._PDO_VOLTAGE_OFFSET) & (2**self._PDO_VOLTAGE_WIDTH-1)) * self._SPR_PDO_VOLTAGE_LSB
         current = ((pdo_word >> self._PDO_CURRENT_OFFSET) & (2**self._PDO_CURRENT_WIDTH-1)) * self._PDO_CURRENT_LSB + self._PDO_CURRENT_BASE
         return [num, pdo_type, voltage, current]
-        
-
-    _PDONUM_ADDR = 0x1C
-    
-    def get_pdo_num(self):
-        return self.read_data(address=self._PDONUM_ADDR, num_bytes=1)
     
     _STATUS_ADDR    = 0x01 # ALL BITS ARE CLEARED ON READ
     _MASK_ADDR      = 0x02
