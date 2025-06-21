@@ -5,7 +5,6 @@ import time
 from AP33772S import *
 
 i2c    = machine.I2C(scl=machine.Pin(7), sda=machine.Pin(6), freq=100000) # esp32c3 xiao
-en_pin = machine.Pin(20, machine.Pin.OUT) # pin 20 is 'TX_D6'
 
 def connect_to_wifi():
     wlan = network.WLAN(network.STA_IF)
@@ -22,10 +21,6 @@ def connect_to_wifi():
         time.sleep(1)
 
 connect_to_wifi()
-
-en_pin.value(0)
-time.sleep(1)
-en_pin.value(1)
 USB_PD = AP33772S(i2c=i2c)
 
 pdo_list = ['0 OFF']
