@@ -123,7 +123,7 @@ class AP33772S:
 
     _RDO_ADDR      = 0x31 # Requested Data Object
     _RDO_NUM_BYTES = 2
-    _RDO_POSITION_WIDTH  = 4 # Not needed as value 1 thru 7 fits into 3bits
+    _RDO_POSITION_WIDTH  = 4
     _RDO_POSITION_OFFSET = 12
 
     _RDO_OP_CURRENT_WIDTH   = 4
