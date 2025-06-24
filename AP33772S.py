@@ -142,5 +142,11 @@ class AP33772S:
         # print("0x{:04x}".format(rdo_word))
         self.write_data(self._RDO_ADDR, rdo_word, self._RDO_NUM_BYTES)
 
+    def set_rdo_max(self, pdo_num=1):
+        rdo_word = 0
+        rdo_word = rdo_word + ((pdo_num & (2**self._RDO_POSITION_WIDTH-1)) << self._RDO_POSITION_OFFSET)
+        rdo_word = rdo_word + 0x0FFF # max voltage and max current for the PDO
+        self.write_data(self._RDO_ADDR, rdo_word, self._RDO_NUM_BYTES)
+
     def set_rdo_reset(self):
         self.write_data(self._RDO_RESET_ADDR, self._RDO_RESET_CMD, 1)
