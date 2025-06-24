@@ -20,7 +20,7 @@ for pdo_num in range(1,14):
 USB_PD.set_rdo(2,9.0,3.0)
 USB_PD.set_output('AUTO')
 time.sleep(2)
-USB_PD.set_rdo_max(1) # just specify a PDO and use max current and max voltage (if PPS)
+USB_PD.set_rdo_max(1) # just specify a PDO and use max current and max voltage (max voltage only applies to PPS)
 time.sleep(2)
 # USB_PD.set_rdo_reset() # this can cause loss of i2c communication, beware
 time.sleep(2)
